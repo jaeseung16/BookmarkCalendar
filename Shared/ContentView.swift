@@ -16,6 +16,8 @@ struct ContentView: View {
         animation: .default)
     private var bookmarks: FetchedResults<Bookmark>
     
+    @State private var showAddBookmarkView = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -34,9 +36,15 @@ struct ContentView: View {
             EditButton()
             #endif
 
-            Button(action: addItem) {
+            Button(action: {
+                showAddBookmarkView.toggle()
+            }) {
                 Label("Add Item", systemImage: "plus")
             }
+            .sheet(isPresented: $showAddBookmarkView, content: {
+                AddBookmarkView(showAddBookmarkView: $showAddBookmarkView)
+                    .environment(\.managedObjectContext, viewContext)
+            })
         }
         
     }
@@ -45,23 +53,6 @@ struct ContentView: View {
         let urlString = bookmark.url == nil ? "" : "\(bookmark.url!)"
         
         return Text("\(urlString) added at \(bookmark.created!, formatter: itemFormatter)")
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newBookmark = Bookmark(context: viewContext)
-            newBookmark.created = Date()
-            newBookmark.url = URL(string: "https://gist.github.com/quoha/4587902")
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
     }
 
     private func deleteItems(offsets: IndexSet) {

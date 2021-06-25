@@ -11,6 +11,8 @@
 		906282492685417600F068D2 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906282462685416200F068D2 /* BookmarkView.swift */; };
 		9062824C268549DA00F068D2 /* UIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9062824B268549DA00F068D2 /* UIWebView.swift */; };
 		9062825026854A7100F068D2 /* MacWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9062824E26854A7100F068D2 /* MacWebView.swift */; };
+		90C987492686817C0053AB6B /* AddBookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C987482686817C0053AB6B /* AddBookmarkView.swift */; };
+		90C9874C268682550053AB6B /* Bookmark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C9874B268682550053AB6B /* Bookmark+Extension.swift */; };
 		90E7F1DE2683EDAA00A22E6C /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E7F1DD2683EDAA00A22E6C /* Tests_iOS.swift */; };
 		90E7F1E92683EDAA00A22E6C /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E7F1E82683EDAA00A22E6C /* Tests_macOS.swift */; };
 		90E7F1EB2683EDAA00A22E6C /* BookmarkCalendar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 90E7F1BF2683EDA800A22E6C /* BookmarkCalendar.xcdatamodeld */; };
@@ -46,6 +48,8 @@
 		906282462685416200F068D2 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
 		9062824B268549DA00F068D2 /* UIWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebView.swift; sourceTree = "<group>"; };
 		9062824E26854A7100F068D2 /* MacWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWebView.swift; sourceTree = "<group>"; };
+		90C987482686817C0053AB6B /* AddBookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookmarkView.swift; sourceTree = "<group>"; };
+		90C9874B268682550053AB6B /* Bookmark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmark+Extension.swift"; sourceTree = "<group>"; };
 		90E7F1C02683EDA800A22E6C /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		90E7F1C12683EDA900A22E6C /* BookmarkCalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCalendarApp.swift; sourceTree = "<group>"; };
 		90E7F1C22683EDA900A22E6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,8 +106,17 @@
 				906282462685416200F068D2 /* BookmarkView.swift */,
 				9062824B268549DA00F068D2 /* UIWebView.swift */,
 				9062824E26854A7100F068D2 /* MacWebView.swift */,
+				90C987482686817C0053AB6B /* AddBookmarkView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		90C9874A268682340053AB6B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				90C9874B268682550053AB6B /* Bookmark+Extension.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		90E7F1B92683EDA800A22E6C = {
@@ -121,6 +134,7 @@
 		90E7F1BE2683EDA800A22E6C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				90C9874A268682340053AB6B /* Entities */,
 				9062824A2685418C00F068D2 /* Views */,
 				90E7F1C12683EDA900A22E6C /* BookmarkCalendarApp.swift */,
 				90E7F1C22683EDA900A22E6C /* ContentView.swift */,
@@ -347,6 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C987492686817C0053AB6B /* AddBookmarkView.swift in Sources */,
+				90C9874C268682550053AB6B /* Bookmark+Extension.swift in Sources */,
 				90E7F1EC2683EDAA00A22E6C /* BookmarkCalendar.xcdatamodeld in Sources */,
 				906282492685417600F068D2 /* BookmarkView.swift in Sources */,
 				9062825026854A7100F068D2 /* MacWebView.swift in Sources */,
