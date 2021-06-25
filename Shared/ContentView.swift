@@ -12,16 +12,22 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Bookmark.created, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
-
+    private var bookmarks: FetchedResults<Bookmark>
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        NavigationView {
+            List {
+                ForEach(bookmarks) { bookmark in
+                    NavigationLink(
+                        destination: BookmarkView(bookmark: bookmark).environment(\.managedObjectContext, viewContext),
+                        label: {
+                            getLabel(bookmark: bookmark)
+                        })
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
         }
         .toolbar {
             #if os(iOS)
@@ -32,12 +38,20 @@ struct ContentView: View {
                 Label("Add Item", systemImage: "plus")
             }
         }
+        
+    }
+    
+    private func getLabel(bookmark: Bookmark) -> some View {
+        let urlString = bookmark.url == nil ? "" : "\(bookmark.url!)"
+        
+        return Text("\(urlString) added at \(bookmark.created!, formatter: itemFormatter)")
     }
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newBookmark = Bookmark(context: viewContext)
+            newBookmark.created = Date()
+            newBookmark.url = URL(string: "https://gist.github.com/quoha/4587902")
 
             do {
                 try viewContext.save()
@@ -52,7 +66,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { bookmarks[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()

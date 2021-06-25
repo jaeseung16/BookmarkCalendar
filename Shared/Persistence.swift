@@ -14,8 +14,9 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newBookmark = Bookmark(context: viewContext)
+            newBookmark.created = Date()
+            newBookmark.url = URL(string: "https://gist.github.com/quoha/4587902")
         }
         do {
             try viewContext.save()
